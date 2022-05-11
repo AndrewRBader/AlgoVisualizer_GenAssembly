@@ -1,0 +1,29 @@
+// Import Dependencies
+const express = require("express");
+const cors = require("cors");
+
+// Import JSON files
+const algorithmsJSON = require("./Models_test/Algorithms.json");
+
+// Create our app object
+const app = express();
+
+// set up middleware
+app.use(cors());
+
+//home route for testing our app
+app.get("/", (req, res) => {
+  res.send("Andrew's Algo Visualizer Site");
+});
+
+// route for retrieving projects
+app.get("/algorithms", (req, res) => {
+  // send projects via JSON
+  res.json(algorithmsJSON);
+});
+
+//declare a variable for our port number
+const PORT = process.env.PORT || 4000;
+
+// turn on the server listener
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
