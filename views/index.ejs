@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algo Index</title>
+</head>
+<body>
+    <h1>Welcome to the Algorithms Index Page</h1>
+    <a href = "/">Algorithms Home Page</a>
+    <div>
+        <% for(let i = 0; i < algorithms.length; i++){ %>
+            <% const algorithm = algorithms[i] %>
+            <div>
+                <h2><%=algorithm.title%></h2></br>
+                <img class = "algorithm-image" src="<%=algorithm.image%>" alt="<%=algorithm.name%>"/>
+                <p><%=algorithm.description%></p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

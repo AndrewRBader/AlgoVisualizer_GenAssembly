@@ -12,21 +12,25 @@ const app = express();
 // set up middleware
 app.use(cors());
 
-//home route backend
-app.get("/", (req, res) => {
-  res.send("Andrew's Algo Visualizer Site");
+// home get route backend
+app.get('/', (req, res) => {
+  res.render('home.ejs');
 });
 
 // route for retrieving algorithms from JSON
 app.get("/algorithmsJSON", (req, res) => {
   // send projects via JSON
-  res.json(algorithmsJSON);
+  console.log(algorithmsJSON);
+  const context = {algorithms:algorithmsJSON};
+  res.render('index.ejs', context);
 });
 
 // route for retrieving algorithms from JS
 app.get("/algorithmsJS", (req, res) => {
   // send projects via JSON
-  res.send(algorithmsJS);
+  console.log(algorithmsJS);
+  const context = {algorithms:algorithmsJS};
+  res.render('index.ejs', context);
 });
 
 //declare a variable for our port number
