@@ -7,8 +7,18 @@
     <title>Algo Index</title>
 </head>
 <body>
-    <h1>Welcome to the Algorithms Database Index Page</h1>
     <a href = "/">Algorithms Home Page</a>
     <a href = "/algorithmsJSDB/new">New AlgorithmsJS DB Page</a>
+    <h1>Welcome to the Algorithms Database Index Page</h1>
+    <div>
+        <% for(let i = 0; i < algorithmsDB.length; i++){ %>
+            <% const algorithmDB = algorithmsDB[i] %>
+            <div>
+                <h2><%=algorithmDB.name%></h2></br>
+                <img class = "algorithmDB-image" src="<%=algorithmDB.image%>" alt="<%=algorithmDB.name%>"/>
+                <p><%=algorithmDB.description%></p>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>

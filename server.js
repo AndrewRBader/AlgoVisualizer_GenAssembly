@@ -8,7 +8,7 @@ require('./config/db.connection')
 // Import JSON files
 const algorithmsJSON = require("./Models_test/Algorithms.json");
 const algorithmsJS = require("./Models_test/Algorithms.js");
-const db = require('./Models_DB/AlgosDB');
+const db = require('./Models_DB/index.js');
 
 // Create our app object
 const app = express();
@@ -51,13 +51,29 @@ app.get('/algorithmsJSDB/new', (req, res) => {
 });
 
 // route for retrieving algorithms from mongoDB (js schema)
-app.get('/algorithmsJSDB', (req, res) => {
-  res.render('indexDB.ejs')
+app.get('/algorithmsJSDB', async (req, res, next) => {
+    try {
+        const algorithmsDB = await db.AlgosDB.find({});
+        const context = {algorithmsDB};
+        return res.render('indexDB.ejs', context);
+    } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+    }
 });
 
 // create post route to create new algorithm docs for db
 app.post('/algorithmsJSDB', async (req,res, next) => {
-  res.send(req.body)
+  try {
+  const createdAlgoDB = await db.AlgosDB.create(req.body);
+  console.log(createdAlgoDB)
+  res.redirect('/algorithmsJSDB/');
+  } catch (error) {
+        console.log(error);
+        req.error = error;
+        return next();
+  }
 });
 
 
