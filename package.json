@@ -1,0 +1,21 @@
+{
+  "name": "project3_algovisualizer_backend",
+  "version": "1.0.0",
+  "description": "This is the Backend of the algo visualizer app project 3 SEI",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewRBader/AlgoVisualizer_GenAssembly_Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewRBader/AlgoVisualizer_GenAssembly_Backend/issues"
+  },
+  "homepage": "https://github.com/AndrewRBader/AlgoVisualizer_GenAssembly_Backend#readme"
+}
