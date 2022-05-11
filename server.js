@@ -7,7 +7,6 @@ require('./config/db.connection')
 ////// Models //////
 // Import JSON files
 const algorithmsJSON = require("./Models_test/Algorithms.json");
-const algorithmsJS = require("./Models_test/Algorithms.js");
 const db = require('./Models_DB/index.js');
 
 // Create our app object
@@ -33,21 +32,13 @@ app.get("/algorithmsJSON", (req, res) => {
   // send projects via JSON
   console.log(algorithmsJSON);
   const context = {algorithms:algorithmsJSON};
-  res.render('index.ejs', context);
-});
-
-// route for retrieving algorithms from JS
-app.get("/algorithmsJS", (req, res) => {
-  // send projects via JSON
-  console.log(algorithmsJS);
-  const context = {algorithms:algorithmsJS};
-  res.render('index.ejs', context);
+  res.render('indexJSON.ejs', context);
 });
 
 // new get route for db -> http://localhost:4000/algorithmsJSDB/new
 // complete just render new.ejs
 app.get('/algorithmsJSDB/new', (req, res) => {
-  res.render('newDB.ejs');
+  res.render('./DBviews/newDB.ejs');
 });
 
 // route for retrieving algorithms from mongoDB (js schema)
@@ -55,7 +46,7 @@ app.get('/algorithmsJSDB', async (req, res, next) => {
     try {
         const algorithmsDB = await db.AlgosDB.find({});
         const context = {algorithmsDB};
-        return res.render('indexDB.ejs', context);
+        return res.render('./DBviews/indexDB.ejs', context);
     } catch (error) {
         console.log(error);
         req.error = error;
