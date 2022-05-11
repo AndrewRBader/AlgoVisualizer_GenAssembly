@@ -35,37 +35,39 @@ app.get("/algorithmsJSON", (req, res) => {
   res.render('indexJSON.ejs', context);
 });
 
+// commenting out db routes for now
+
 // new get route for db -> http://localhost:4000/algorithmsJSDB/new
 // complete just render new.ejs
-app.get('/algorithmsJSDB/new', (req, res) => {
-  res.render('./DBviews/newDB.ejs');
-});
+// app.get('/algorithmsJSDB/new', (req, res) => {
+//   res.render('./DBviews/newDB.ejs');
+// });
 
-// route for retrieving algorithms from mongoDB (js schema)
-app.get('/algorithmsJSDB', async (req, res, next) => {
-    try {
-        const algorithmsDB = await db.AlgosDB.find({});
-        const context = {algorithmsDB};
-        return res.render('./DBviews/indexDB.ejs', context);
-    } catch (error) {
-        console.log(error);
-        req.error = error;
-        return next();
-    }
-});
+// // route for retrieving algorithms from mongoDB (js schema)
+// app.get('/algorithmsJSDB', async (req, res, next) => {
+//     try {
+//         const algorithmsDB = await db.AlgosDB.find({});
+//         const context = {algorithmsDB};
+//         return res.render('./DBviews/indexDB.ejs', context);
+//     } catch (error) {
+//         console.log(error);
+//         req.error = error;
+//         return next();
+//     }
+// });
 
-// create post route to create new algorithm docs for db
-app.post('/algorithmsJSDB', async (req,res, next) => {
-  try {
-  const createdAlgoDB = await db.AlgosDB.create(req.body);
-  console.log(createdAlgoDB)
-  res.redirect('/algorithmsJSDB/');
-  } catch (error) {
-        console.log(error);
-        req.error = error;
-        return next();
-  }
-});
+// // create post route to create new algorithm docs for db
+// app.post('/algorithmsJSDB', async (req,res, next) => {
+//   try {
+//   const createdAlgoDB = await db.AlgosDB.create(req.body);
+//   console.log(createdAlgoDB)
+//   res.redirect('/algorithmsJSDB/');
+//   } catch (error) {
+//         console.log(error);
+//         req.error = error;
+//         return next();
+//   }
+// });
 
 
 //declare a variable for our port number
