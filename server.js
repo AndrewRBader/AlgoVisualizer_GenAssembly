@@ -69,7 +69,7 @@ app.post('/algorithmsJSDB', async (req,res, next) => {
 
 
 //declare a variable for our port number
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 // turn on the server listener
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
