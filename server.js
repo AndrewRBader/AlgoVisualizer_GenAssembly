@@ -45,6 +45,7 @@ app.get("/algorithmsJS", (req, res) => {
 });
 
 // new get route for db -> http://localhost:4000/algorithmsJSDB/new
+// complete just render new.ejs
 app.get('/algorithmsJSDB/new', (req, res) => {
   res.render('newDB.ejs');
 });
@@ -54,6 +55,10 @@ app.get('/algorithmsJSDB', (req, res) => {
   res.render('indexDB.ejs')
 });
 
+// create post route to create new algorithm docs for db
+app.post('/algorithmsJSDB', async (req,res, next) => {
+  res.send(req.body)
+});
 
 
 //declare a variable for our port number
