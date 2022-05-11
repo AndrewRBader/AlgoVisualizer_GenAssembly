@@ -1,9 +1,7 @@
 // require mongoose in schema file
 const mongoose = require('mongoose');
 
-
-
-//basic meme schema:
+//basic algorithmJS schema:
 
 const algorithmJSSchema = new mongoose.Schema({
     name: {

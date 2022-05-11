@@ -10,6 +10,8 @@ const algorithmsJS = require("./Models_test/Algorithms.js");
 const app = express();
 
 // set up middleware
+// connect to mongodb
+require('./config/db.connection')
 app.use(cors());
 
 // home get route backend
