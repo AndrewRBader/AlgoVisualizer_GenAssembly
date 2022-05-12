@@ -18,5 +18,5 @@ app.use(express.json()); // parse json bodies
 
 db.FunctionCollection.create({
     name: "AddFunction",
-    value: function (x, y){ return x + y; }
+    value: "function addFunction(x, y){return x + y;}"
 })
