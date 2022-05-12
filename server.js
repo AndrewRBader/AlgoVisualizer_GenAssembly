@@ -30,9 +30,7 @@ app.get('/', (req, res) => {
 // route for retrieving algorithms from JSON
 app.get("/algorithmsJSON", (req, res) => {
   // send projects via JSON
-  console.log(algorithmsJSON);
-  const context = {algorithms:algorithmsJSON};
-  res.render('indexJSON.ejs', context);
+  res.json(algorithmsJSON);
 });
 
 
