@@ -6,8 +6,6 @@ const morgan = require("morgan");
 require('./config/db.connection')
 
 ////// Models //////
-// Import JSON files
-const algorithmsJSON = require("./Models_test/Algorithms.json");
 const db = require('./Models_DB/index.js');
 
 // Create our app object
@@ -29,12 +27,6 @@ app.set('view engine', 'ejs');
 // home get route backend
 app.get('/', (req, res) => {
   res.render('home.ejs');
-});
-
-// route for retrieving algorithms from JSON
-app.get("/algorithmsJSON", (req, res) => {
-  // send projects via JSON
-  res.json(algorithmsJSON);
 });
 
 
