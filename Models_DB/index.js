@@ -1,3 +1,4 @@
 module.exports = {
-    AlgosDB:require('./AlgosDB.js'),
+    AlgosDB : require('./AlgosDB.js'),
+    FunctionCollection: require('./FunctionCollection.js')
 }

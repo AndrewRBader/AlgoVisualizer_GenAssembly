@@ -46,6 +46,16 @@ app.get('/algorithmsJSDB', async (req, res) => {
     }
 });
 
+// route for retrieving functions from mongoDB
+app.get('/functions', async (req, res) => {
+  try {
+      res.json(await db.FunctionCollection.find({}));
+  } catch (error) {
+    //send error
+    res.status(400).json(error);
+  }
+});
+
 // create post route to create new algorithm docs for db
 app.post('/algorithmsJSDB', async (req,res, next) => {
   try {
