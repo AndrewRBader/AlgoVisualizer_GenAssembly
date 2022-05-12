@@ -1,6 +1,7 @@
 // Import Dependencies
 const express = require("express");
 const cors = require("cors");
+const morgan = require("morgan");
 // connect to mongodb
 require('./config/db.connection')
 
@@ -14,6 +15,9 @@ const app = express();
 
 // set up middleware
 app.use(cors());
+app.use(morgan("dev")); // logging
+app.use(express.json()); // parse json bodies
+
 // mongoDB/express middleware
 // body parser middleware
 app.use(express.urlencoded({extended:false}));
@@ -41,15 +45,12 @@ app.get('/algorithmsJSDB/new', (req, res) => {
 });
 
 // route for retrieving algorithms from mongoDB (js schema)
-app.get('/algorithmsJSDB', async (req, res, next) => {
+app.get('/algorithmsJSDB', async (req, res) => {
     try {
-        const algorithmsDB = await db.AlgosDB.find({});
-        const context = {algorithmsDB};
-        return res.render('./DBviews/indexDB.ejs', context);
+        res.json(await db.AlgosDB.find({}));
     } catch (error) {
-        console.log(error);
-        req.error = error;
-        return next();
+      //send error
+      res.status(400).json(error);
     }
 });
 
