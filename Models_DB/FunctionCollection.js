@@ -6,7 +6,7 @@ const functionSchema = new mongoose.Schema({
         type: String,
         required: [true, 'input algorithm name']
     },
-    function: {
+    value: {
         type: String,
         required: [true, 'please input algorithm function']
     }
